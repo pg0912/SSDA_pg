@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="SSDA Test Automation Smoke Suite" >
+<listeners>
+<listener class-name="ssda_test.Listeners"/>
+</listeners>
+	<test name="Validating Login page test">
+		<classes>
+			<class name="ssda_test.aggregator.TC01_AggrLoginTest"/>
+		</classes>
+	</test>
+	<test name="Validating Pending order Home Page and order details Window">
+		<classes>
+			<class name="ssda_test.aggregator.TC02_AggrHomePageAndPendingOrderDetailsValidation"/>
+		</classes>
+	</test>
+	<test name="Validating actions on order details window for pending order">
+		<classes>
+			<class name="ssda_test.aggregator.TC_03_AggrvalidateActionsOnPendingOrderDetails"/>
+		</classes>
+	</test>
+	<test name="Validating pending order reflects in ready tab after marking ready for delivery">
+		<classes>
+			<class name="ssda_test.aggregator.TC_04_AggrValidateUpdatedPendingOrdersInReadyOrder"/>
+		</classes>
+	</test>
+	<test name="Validating ready orders tab">
+		<classes>
+			<class name="ssda_test.aggregator.TC_05_AggrValidateReadyOrdersDetails"/>
+		</classes>
+	</test>
+	<test name="Validating complete orders tab">
+		<classes>
+			<class name="ssda_test.aggregator.TC_06_AggrValidateCompleteOrdersDetails"/>
+		</classes>
+	</test>
+	<test name="Validating lapsed order tab ">
+		<classes>
+			<class name="ssda_test.aggregator.TC_07_AggrValidateLapsedOrdersDetails"/>
+		</classes>
+		</test>
+	<test name="Validating canceled order tab ">
+		<classes>
+			<class name="ssda_test.aggregator.TC_08_AggrValidateCanceledOrdersDetails"/>
+		</classes>
+	</test>
+ <!-- Test -->
+</suite> <!-- Suite -->
