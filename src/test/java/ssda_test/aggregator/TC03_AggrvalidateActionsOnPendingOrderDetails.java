@@ -18,7 +18,7 @@ import pageObjects.LoginPage;
 import resources.TestBase;
 import resources.Utilities;
 
-public class TC_03_AggrvalidateActionsOnPendingOrderDetails extends TestBase {
+public class TC03_AggrvalidateActionsOnPendingOrderDetails extends TestBase {
 
 
 	public WebDriver driver;
@@ -44,32 +44,21 @@ public class TC_03_AggrvalidateActionsOnPendingOrderDetails extends TestBase {
 	@BeforeTest
 	public void initialize() throws IOException{
 		driver = initializeDriver();
-		log.info("Driver is initialized"); // driver intialized before each execution of test in this class and closing at the end
+		log.info("Driver is initialized"); 
 		ahp = new AggregatorHomePage(driver);
 		lp = new LoginPage(driver); 
-		util = new Utilities();//object created for login and aggregator home page class
-	}// to differntiate between two driver instance we use driver in each test
-
-	@Test(priority=1)
-	public void basePageNavigation() throws IOException {
-		driver.get(prop.getProperty("url")); //driver opening the url in browser selenium method
-		log.info("Navigated to Login page"); // to add message to log file
-		// lp = new LoginPage(driver); //object  driver is instance for reference to that particular initialized driver in the begining
-		lp.getMobile().sendKeys(prop.getProperty("aggr_mobile"));// send key-sending values in input fields 
-		// to read values from data.peroperty files using methods from property class
-		lp.getPassword().sendKeys(prop.getProperty("aggr_password"));//methods of property class to read values
-		lp.getLogin().click(); //.click,sendkeys ,get selenium methods is displayed
-		// ahp = new AggregatorHomePage(driver);
-		util.waitForElementToBeVisible(driver, ahp.getPendingOrders(), 5);
-		Assert.assertTrue(ahp.getPendingOrders().isDisplayed()); //assert testng methods
-		//Assert.assertEquals(driver.getTitle(), "Golden Katar URC"); if identify through title
-		//Assert.assertTrue(getPendingOrders(), "error message");
-		log.info("Succesfully landing to Aggregators orders page");
-
+		util = new Utilities();
+		driver.get(prop.getProperty("url")); 
+		log.info("Navigated to Login page"); 
 	}
-
-	@Test(priority=2)
-	public void testButtonsOrderDetails() throws InterruptedException {
+	 
+	@Test(priority=1)
+	public void testButtonsOrderDetails()  {
+			
+		lp.getMobile().sendKeys(prop.getProperty("aggr_mobile"));
+		lp.getPassword().sendKeys(prop.getProperty("aggr_password"));
+		lp.getLogin().click(); 
+		Assert.assertTrue(ahp.getPendingOrders().isDisplayed()); 
 		util.waitForElementToBeVisible(driver, ahp.getOrderHeader(), 5);
 		util.doubleClick(driver, ahp.getOrderHeader());
 		ahp.getOrderID().click();
@@ -93,8 +82,8 @@ public class TC_03_AggrvalidateActionsOnPendingOrderDetails extends TestBase {
 		}
 	}
 
-	@Test(priority=3)
-	public void testRemoveOrderCancelButton() throws InterruptedException {
+	@Test(priority=2)
+	public void testRemoveOrderCancelButton()  {
 		//util.doubleClick(driver, ahp.getOrderHeader());
 		//orderId = ahp.getOrderID().getText(); 
 		log.info("Validate after clicking on remove button for an order");
@@ -117,7 +106,7 @@ public class TC_03_AggrvalidateActionsOnPendingOrderDetails extends TestBase {
 		}
 	
 	}
-	@Test(priority=4)
+	@Test(priority=3)
 	public void testRemoveOrderDetails() throws InterruptedException {
 		util.waitForElementToBeVisible(driver, ahp.getActions(), 30);
 		ahp.getActions().click();
@@ -188,7 +177,6 @@ public class TC_03_AggrvalidateActionsOnPendingOrderDetails extends TestBase {
 
 	@AfterTest
 	public void teardown(){
-		driver.close();
 		driver.quit();
 	}
 

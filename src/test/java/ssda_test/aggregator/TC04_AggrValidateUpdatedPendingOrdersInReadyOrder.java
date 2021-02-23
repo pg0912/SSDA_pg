@@ -16,7 +16,7 @@ import pageObjects.LoginPage;
 import resources.TestBase;
 import resources.Utilities;
 
-public class TC_04_AggrValidateUpdatedPendingOrdersInReadyOrder extends TestBase {
+public class TC04_AggrValidateUpdatedPendingOrdersInReadyOrder extends TestBase {
 	
 	
 	public WebDriver driver;
@@ -38,36 +38,25 @@ public class TC_04_AggrValidateUpdatedPendingOrdersInReadyOrder extends TestBase
 	public static Logger log = LogManager.getLogger(TestBase.class.getName());
 	
 
+
 	@BeforeTest
 	public void initialize() throws IOException{
 		driver = initializeDriver();
-		log.info("Driver is initialized"); // driver intialized before each execution of test in this class and closing at the end
+		log.info("Driver is initialized"); 
 		ahp = new AggregatorHomePage(driver);
 		lp = new LoginPage(driver); 
-		util = new Utilities();//object created for login and aggregator home page class
-	}// to differntiate between two driver instance we use driver in each test
-	
-	@Test(priority=1)
-	public void basePageNavigation() throws IOException {
-		driver.get(prop.getProperty("url")); //driver opening the url in browser selenium method
-		log.info("Navigated to Login page"); // to add message to log file
-		// lp = new LoginPage(driver); //object  driver is instance for reference to that particular initialized driver in the begining
-		lp.getMobile().sendKeys(prop.getProperty("aggr_mobile"));// send key-sending values in input fields 
-		// to read values from data.peroperty files using methods from property class
-		lp.getPassword().sendKeys(prop.getProperty("aggr_password"));//methods of property class to read values
-		lp.getLogin().click(); //.click,sendkeys ,get selenium methods is displayed
-		// ahp = new AggregatorHomePage(driver);
-		//util.waitForElementToBeVisible(driver, ahp.getPendingOrders(), 5);
-		Assert.assertTrue(ahp.getPendingOrders().isDisplayed()); //assert testng methods
-		//Assert.assertEquals(driver.getTitle(), "Golden Katar URC"); if identify through title
-		//Assert.assertTrue(getPendingOrders(), "error message");
-		log.info("Succesfully landing to Aggregators orders page");
-		
+		util = new Utilities();
+		driver.get(prop.getProperty("url")); 
+		log.info("Navigated to Login page"); 
 	}
 	
-	
-	@Test(priority=2)
-	public void testViewEditOrderDetailsChangeTimeSlot() throws InterruptedException {
+	@Test(priority=1)
+	public void testViewEditOrderDetailsChangeTimeSlot() {
+		 	
+		lp.getMobile().sendKeys(prop.getProperty("aggr_mobile"));
+		lp.getPassword().sendKeys(prop.getProperty("aggr_password"));
+		lp.getLogin().click(); 
+		Assert.assertTrue(ahp.getPendingOrders().isDisplayed()); 
 	    util.waitForElementToBeVisible(driver, ahp.getOrderID(), 30);
 		util.doubleClick(driver, ahp.getOrderHeader());
 		orderId = ahp.getOrderID().getText();
@@ -106,7 +95,7 @@ public class TC_04_AggrValidateUpdatedPendingOrdersInReadyOrder extends TestBase
 		}
 		
 	
-	@Test(priority=3)
+	@Test(priority=2)
 	public void readyforDeliveryTest() {
 		log.info("Validate after clicking on Actions button for an order");
 		util.waitForElementToBeVisible(driver, ahp.getCustomerName(), 30);
@@ -128,7 +117,7 @@ public class TC_04_AggrValidateUpdatedPendingOrdersInReadyOrder extends TestBase
 	System.out.println("orderChangedAlertMessage");
 }
 
-	@Test(priority=4)
+	@Test(priority=3)
 	public void testReadyordersInReadytab() throws InterruptedException {
 		log.info("Validate after marking of an order to ready for delivery it display under ready order tab");
 		Assert.assertTrue(ahp.getReadyOrders().isDisplayed());
@@ -143,9 +132,9 @@ public class TC_04_AggrValidateUpdatedPendingOrdersInReadyOrder extends TestBase
 	    log.info("Validate pending order id marked as ready for delivery  is displayed in ready tab");  
 		
 	}
+	
 	@AfterTest
 	public void teardown(){
-		driver.close();
 		driver.quit();
 	}
 

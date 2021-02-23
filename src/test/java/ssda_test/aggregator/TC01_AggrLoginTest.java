@@ -15,9 +15,6 @@ import resources.Utilities;
 
 import org.testng.Assert;
 
-
-
-
 public class TC01_AggrLoginTest extends TestBase{
 	
 	
@@ -39,7 +36,6 @@ public class TC01_AggrLoginTest extends TestBase{
 		public void testWithMobileNumberLessThanTenDigits() {
 			driver.get(prop.getProperty("url"));
 			log.info("Validate if Login button is disabled when mobile number is less than 10 digits");
-			
 			lp.getMobile().sendKeys("123456789");
 			lp.getPassword().sendKeys("password");
 			log.info("Enter Mobile number less than 10 digits and verify Login button");
@@ -92,10 +88,7 @@ public class TC01_AggrLoginTest extends TestBase{
 			lp.getPassword().sendKeys(prop.getProperty("aggr_password"));
 			log.info("Enter valid aggregator credentials and click on Login button");
 			lp.getLogin().click();
-			
 			util.waitForElementToBeVisible(driver, ahp.getClearFiltersButton(),5);
-			
-			//Assert.assertTrue(ahp.getCheckoutButton().isDisplayed());
 			System.out.println(driver.getCurrentUrl());
 			Assert.assertTrue(driver.getCurrentUrl().contains("aggregator"));
 			log.info("Aggregator home page displayed. Successfully validated customer login with valid credentials");
@@ -103,8 +96,7 @@ public class TC01_AggrLoginTest extends TestBase{
 
 		@AfterTest
 		public void teardown(){
-			driver.close();
-			driver.quit();
+		driver.quit();
 		}
 	}
 

@@ -16,32 +16,32 @@
 	</test>
 	<test name="Validating actions on order details window for pending order">
 		<classes>
-			<class name="ssda_test.aggregator.TC_03_AggrvalidateActionsOnPendingOrderDetails"/>
+			<class name="ssda_test.aggregator.TC03_AggrvalidateActionsOnPendingOrderDetails"/>
 		</classes>
 	</test>
 	<test name="Validating pending order reflects in ready tab after marking ready for delivery">
 		<classes>
-			<class name="ssda_test.aggregator.TC_04_AggrValidateUpdatedPendingOrdersInReadyOrder"/>
+			<class name="ssda_test.aggregator.TC04_AggrValidateUpdatedPendingOrdersInReadyOrder"/>
 		</classes>
 	</test>
 	<test name="Validating ready orders tab">
 		<classes>
-			<class name="ssda_test.aggregator.TC_05_AggrValidateReadyOrdersDetails"/>
+			<class name="ssda_test.aggregator.TC05_AggrValidateReadyOrdersDetails"/>
 		</classes>
 	</test>
 	<test name="Validating complete orders tab">
 		<classes>
-			<class name="ssda_test.aggregator.TC_06_AggrValidateCompleteOrdersDetails"/>
+			<class name="ssda_test.aggregator.TC06_AggrValidateCompleteOrdersDetails"/>
 		</classes>
 	</test>
 	<test name="Validating lapsed order tab ">
 		<classes>
-			<class name="ssda_test.aggregator.TC_07_AggrValidateLapsedOrdersDetails"/>
+			<class name="ssda_test.aggregator.TC07_AggrValidateLapsedOrdersDetails"/>
 		</classes>
 		</test>
 	<test name="Validating canceled order tab ">
 		<classes>
-			<class name="ssda_test.aggregator.TC_08_AggrValidateCanceledOrdersDetails"/>
+			<class name="ssda_test.aggregator.TC08_AggrValidateCanceledOrdersDetails"/>
 		</classes>
 	</test>
  <!-- Test -->

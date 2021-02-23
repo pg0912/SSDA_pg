@@ -88,8 +88,6 @@ public class AggregatorHomePage {
 
        private By quantity = By.xpath("//tbody/tr[1]/td[3]/input[1]");
 
-       //*[@role='dialog']//table[@role='grid']/tbody/tr[1]/td[3]/input"
-
        private By removeText = By.xpath("//table[@class='mat-table cdk-table']//th[3]/span");
 
        private By price = By.xpath("//table[@class='mat-table cdk-table']//th[4]");
@@ -104,7 +102,7 @@ public class AggregatorHomePage {
 
        private By readyForDeliveryButton = By.xpath("//span[contains(.,'Ready for Delivery')]//parent::button");
 
-       //private By orderDetailsCloseButton = By.xpath("//span[contains(.,'Close')]");
+       private By orderDetailsCloseButton = By.xpath("//span[contains(.,'Close')]");
 
        private By storeName = By.xpath( "//span[contains(.,' Store: ')]");
 
